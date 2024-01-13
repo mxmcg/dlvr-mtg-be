@@ -1,6 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import gql from "graphql-tag";
 import mongoose from "mongoose";
+require("dotenv").config();
 import { authResolvers, User } from "./users";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
@@ -138,9 +139,9 @@ const resolvers = {
 async function startServer() {
   try {
     // Connect to MongoDB using Mongoose
-    await mongoose.connect(
-      "mongodb+srv://maxmcgee:test123@cluster0.chxwbjv.mongodb.net/?retryWrites=true&w=majority"
-    );
+    const mongoUri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PW}@${process.env.MONGO_URL}/?retryWrites=true&w=majority`;
+
+    await mongoose.connect(mongoUri);
     console.log("Connected to MongoDB using Mongoose");
 
     // Start the Apollo Server
