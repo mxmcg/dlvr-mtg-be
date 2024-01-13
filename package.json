@@ -9,6 +9,7 @@
   "scripts": {
     "start": "npm run compile && node ./dist/index.js",
     "build": "tsc",
+    "postinstall": "npm run tsc",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "compile": "tsc",
     "tsc": "tsc"
