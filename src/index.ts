@@ -1,7 +1,7 @@
+require("dotenv").config();
 import { ApolloServer } from "@apollo/server";
 import gql from "graphql-tag";
 import mongoose from "mongoose";
-require("dotenv").config();
 import { authResolvers, User } from "./users";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
